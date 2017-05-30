@@ -21,10 +21,10 @@
         <activity
             android:name=".Views.UsuarioActivity"
             android:label="Usuário"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Views.BalancaDigitalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fandradetecinfo.com.meupeso.MainActivity" />
+                android:value="fandradetecinfo.com.meupeso.Views.BalancaDigitalActivity" />
         </activity>
         <activity
             android:name=".Views.BalancaDigitalActivity"

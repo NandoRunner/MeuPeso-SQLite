@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import fandradetecinfo.com.meupeso.Controllers.BalancaDigitalController;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Relatorio;

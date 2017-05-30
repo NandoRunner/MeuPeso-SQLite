@@ -1,31 +1,17 @@
 package fandradetecinfo.com.meupeso.Views;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.DatePicker;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 import fandradetecinfo.com.meupeso.Controllers.BalancaDigitalController;
-import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.PrefsHandler;
 import fandradetecinfo.com.meupeso.R;
 
@@ -49,7 +35,7 @@ public class BalancaDigitalFrag01 extends Fragment
     {
         vw = inflater.inflate(R.layout.frag_01, container, false);
 
-        FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.fabFrag01);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

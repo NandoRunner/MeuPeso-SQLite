@@ -4,18 +4,13 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -71,7 +66,7 @@ public class BalancaDigitalActivity extends Activity
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
                 MainActivity.usuario = String.valueOf(position + 1);
-                prefs.carregar(vw, MainActivity.usuario);
+                prefs.carregar(findViewById(android.R.id.content), MainActivity.usuario);
             }
 
             @Override
@@ -79,6 +74,7 @@ public class BalancaDigitalActivity extends Activity
                 // sometimes you need nothing here
             }
         });
+
 
         EditText myTxt = (EditText) findViewById(R.id.txtData);
         android.text.format.DateFormat df = new android.text.format.DateFormat();
@@ -146,6 +142,7 @@ public class BalancaDigitalActivity extends Activity
             tvDt.setText(day1 + "/" + month1 + "/" + year1);
         }
     };
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -168,6 +165,7 @@ public class BalancaDigitalActivity extends Activity
         }
         return super.onOptionsItemSelected(item);
     }
+
     private boolean gravarRegistro()
     {
         try

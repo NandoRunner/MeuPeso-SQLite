@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -14,13 +13,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.Models.BalancaDigital;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Relatorio;
-
-import java.util.Map;
 
 /**
  * Created by Fernando on 14/02/2017.

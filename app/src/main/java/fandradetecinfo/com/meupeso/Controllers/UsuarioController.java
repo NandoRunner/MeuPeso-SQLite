@@ -29,7 +29,7 @@ public class UsuarioController extends _BaseController {
         this.etNome = (EditText) activity.findViewById(R.id.txtUsrNome);
         this.etAltura = (EditText) activity.findViewById(R.id.txtUsrAltura);
         this.etData = (EditText) activity.findViewById(R.id.txtUsrData);
-        this.spSexo = (Spinner) activity.findViewById(R.id.spinnerSexo);
+        this.spSexo = (Spinner) activity.findViewById(R.id.spnUsrSexo);
     }
 
     public Usuario getModel() {
