@@ -27,4 +27,5 @@
     </string-array>
     <string name="title_activity_user">User</string>
     <string name="title_activity_my_user">MyUser</string>
+    <string name="title_activity_initial">InitialActivity</string>
 </resources>

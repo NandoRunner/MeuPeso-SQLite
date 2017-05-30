@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,140 +49,23 @@ public class BalancaDigitalFrag01 extends Fragment
     {
         vw = inflater.inflate(R.layout.frag_01, container, false);
 
-        ctx = getActivity().getBaseContext();
-        prefs = new PrefsHandler(ctx);
-
-        ImageButton myImgBtn = (ImageButton) vw.findViewById(R.id.imageButton);
-        myImgBtn.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v1) {
-                tratarAdicionarUsuario();
+            public void onClick(View view) {
+                tratarAdicionarRegistro();
             }
         });
-
-        Spinner mySpn = (Spinner) vw.findViewById(R.id.spinnerUsuario);
-        mySpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-                MainActivity.usuario = String.valueOf(position + 1);
-                prefs.carregar(vw, MainActivity.usuario);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // sometimes you need nothing here
-            }
-        });
-
-        EditText myTxt = (EditText) vw.findViewById(R.id.txtData);
-        android.text.format.DateFormat df = new android.text.format.DateFormat();
-        myTxt.setText(df.format("dd/MM/yyyy", new Date()));
-        myTxt.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
-             @Override
-             public void onFocusChange(View v1, boolean hasFocus)
-             {
-                 tratarData(vw, hasFocus);
-             }
-        });
-
-        Button myBtn = (Button) vw.findViewById(R.id.btnGravar);
-        myBtn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v1)
-            {
-                gravarRegistro(vw);
-            }
-        });
-        myBtn.setFocusableInTouchMode(true);
-        myBtn.requestFocus();
 
         return vw;
     }
 
-    private void tratarAdicionarUsuario()
+    private void tratarAdicionarRegistro()
     {
-        Intent objIntent = new Intent(getActivity(), UsuarioActivity.class);
+        Intent objIntent = new Intent(getActivity(), BalancaDigitalActivity.class);
         startActivity(objIntent);
     }
 
-    private void tratarData(View v1, boolean hasFocus)
-    {
-        if (hasFocus)
-        {
-            Calendar cal = Calendar.getInstance(TimeZone.getDefault()); // Get current date
-
-            DatePickerDialog datePicker = new DatePickerDialog(this.getActivity(),
-                    R.style.AppTheme, datePickerListener,
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH));
-
-            datePicker.setCancelable(false);
-            datePicker.setTitle("Selecione a data");
-            datePicker.getWindow().setLayout(600, 1000);
-            datePicker.show();
-        }
-    }
-
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener()
-    {
-        public void onDateSet(DatePicker view, int selectedYear,
-                              int selectedMonth, int selectedDay) {
-            String year1 = String.valueOf(selectedYear);
-            String month1 = String.valueOf(selectedMonth + 1);
-            String day1 = String.valueOf(selectedDay);
-            month1 = month1.length() == 1 ? "0" + month1 : month1;
-            day1 = day1.length() == 1 ? "0" + day1 : day1;
-            EditText tvDt = (EditText) vw.findViewById(R.id.txtData);
-
-            tvDt.setText(day1 + "/" + month1 + "/" + year1);
-        }
-    };
-
-    private boolean gravarRegistro(View v1)
-    {
-        try
-        {
-            this.controller = new BalancaDigitalController(getActivity());
-
-            if(!controller.validarDados()) return false;
-
-            controller.pegarDoFormulario();
-
-            if(controller.registroExistente()) {
-                controller.alertarRegistroExistente();
-                return false;
-            }
-
-            if(prefs.registroAnteriorIdentico(controller.getModel())) {
-                controller.alertarRegistroAnteriorIdentico();
-                return false;
-            }
-
-            controller.inserir();
-
-            prefs.salvar(controller.getModel());
-            /*
-            handler=new DBHandler(getActivity().getBaseContext());//getting the context object
-            handler.open();
-            long id = handler.InserirBalancaDigital(minhaBalanca);
-            handler.close();
-            */
-
-            Toast.makeText(getActivity(), "Registro gravado!", Toast.LENGTH_SHORT).show();
-            Log.i("LogX", "Registro gravado!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-            Log.i("LogX", e.getMessage());
-            return false;
-        }
-    }
 
     public static BalancaDigitalFrag01 newInstance(String text)
     {
@@ -203,9 +87,6 @@ public class BalancaDigitalFrag01 extends Fragment
             if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
-
-
-
 
 
 }

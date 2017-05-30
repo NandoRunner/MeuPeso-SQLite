@@ -72,6 +72,8 @@ public class UsuarioActivity extends Activity
             String year1 = String.valueOf(selectedYear);
             String month1 = String.valueOf(selectedMonth + 1);
             String day1 = String.valueOf(selectedDay);
+            month1 = month1.length() == 1 ? "0" + month1 : month1;
+            day1 = day1.length() == 1 ? "0" + day1 : day1;
             EditText tvDt = (EditText) findViewById(R.id.txtUsrData);
             tvDt.setText(day1 + "/" + month1 + "/" + year1);
         }
@@ -80,7 +82,7 @@ public class UsuarioActivity extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_usuario, menu);
         return true;
     }
 

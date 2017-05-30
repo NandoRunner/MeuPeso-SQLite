@@ -26,6 +26,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fandradetecinfo.com.meupeso.MainActivity" />
         </activity>
+        <activity
+            android:name=".Views.BalancaDigitalActivity"
+            android:label="Registro"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fandradetecinfo.com.meupeso.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
