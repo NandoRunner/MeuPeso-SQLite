@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +28,7 @@ import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.PrefsHandler;
 import fandradetecinfo.com.meupeso.R;
 
-public class BalancaDigitalActivity extends Activity
+public class BalancaDigitalActivity extends AppCompatActivity
 {
     private String peso;
     private String gordura;
@@ -42,12 +44,13 @@ public class BalancaDigitalActivity extends Activity
     private BalancaDigitalController controller;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-	{
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balanca_digital);
-		
-		//vw = inflater.inflate(R.layout.activity_balanca_digital, container, false);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarBalancaDigital);
+        setSupportActionBar(toolbar);
+
+        //vw = inflater.inflate(R.layout.activity_balanca_digital, container, false);
 
         ctx = getBaseContext();
         prefs = new PrefsHandler(ctx);
@@ -61,8 +64,7 @@ public class BalancaDigitalActivity extends Activity
         });
 
         Spinner mySpn = (Spinner) findViewById(R.id.spinnerUsuario);
-        mySpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
+        mySpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
                 MainActivity.usuario = String.valueOf(position + 1);
@@ -79,27 +81,27 @@ public class BalancaDigitalActivity extends Activity
         EditText myTxt = (EditText) findViewById(R.id.txtData);
         android.text.format.DateFormat df = new android.text.format.DateFormat();
         myTxt.setText(df.format("dd/MM/yyyy", new Date()));
-        myTxt.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
-             @Override
-             public void onFocusChange(View v1, boolean hasFocus)
-             {
-                 tratarData(hasFocus);
-             }
-        });
-
-        /*Button myBtn = (Button) findViewById(R.id.btnGravar);
-        myBtn.setOnClickListener(new View.OnClickListener()
-        {
+        myTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v1)
-            {
-                gravarRegistro();
+            public void onFocusChange(View v1, boolean hasFocus) {
+                tratarData(hasFocus);
             }
         });
-        myBtn.setFocusableInTouchMode(true);
-        myBtn.requestFocus();*/
 
+
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.back_w_48px);
+
+            toolbar.setTitle("Registro Novo");
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavUtils.navigateUpFromSameTask(BalancaDigitalActivity.this);
+                }
+            });
+            toolbar.inflateMenu(R.menu.menu_registro);
+
+        }
     }
 
     private void tratarAdicionarUsuario()

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,27 +24,39 @@ import fandradetecinfo.com.meupeso.R;
  * Created by Fernando on 09/01/2017.
  */
 
-public class UsuarioActivity extends Activity
+public class UsuarioActivity extends AppCompatActivity
 {
     private UsuarioController controller;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarUsuario);
+        setSupportActionBar(toolbar);
 
         EditText myTxt = (EditText) findViewById(R.id.txtUsrData);
-        myTxt.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
+        myTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View v1, boolean hasFocus)
-            {
+            public void onFocusChange(View v1, boolean hasFocus) {
                 tratarData(hasFocus);
             }
         });
 
         this.controller = new UsuarioController(this);
+
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.back_w_48px);
+
+            toolbar.setTitle("Usuário Novo");
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavUtils.navigateUpFromSameTask(UsuarioActivity.this);
+                }
+            });
+            toolbar.inflateMenu(R.menu.menu_usuario);
+        }
     }
 
     private void tratarData(boolean hasFocus)

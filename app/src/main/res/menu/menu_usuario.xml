@@ -1,8 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="fandradetecinfo.com.meupeso.Views.UsuarioActivity">-->
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/salvar_usuario"
         android:orderInCategory="100"

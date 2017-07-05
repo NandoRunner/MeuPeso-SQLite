@@ -14,6 +14,7 @@
     <string name="txt_nome">Nome</string>
     <string name="usr_nome">Nome</string>
     <string name="salvar_usuario">Salvar</string>
+    <string name="salvar_registro">Salvar</string>
     <string-array name="user_arrays">
         <item>1</item>
         <item>2</item>
@@ -28,4 +29,7 @@
     <string name="title_activity_user">User</string>
     <string name="title_activity_my_user">MyUser</string>
     <string name="title_activity_initial">InitialActivity</string>
+    <string name="data_de_nascimento">Data de Nascimento</string>
+    <string name="nome">Nome</string>
+    <string name="altura">Altura</string>
 </resources>
