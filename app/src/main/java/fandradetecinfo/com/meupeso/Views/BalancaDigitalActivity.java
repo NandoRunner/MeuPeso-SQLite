@@ -102,6 +102,10 @@ public class BalancaDigitalActivity extends AppCompatActivity
             toolbar.inflateMenu(R.menu.menu_registro);
 
         }
+
+        EditText myTxtFocus = (EditText) findViewById(R.id.txtPeso);
+
+        myTxtFocus.requestFocus();
     }
 
     private void tratarAdicionarUsuario()

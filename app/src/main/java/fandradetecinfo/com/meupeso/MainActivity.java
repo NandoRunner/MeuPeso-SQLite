@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag01;
 import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag02;
@@ -13,7 +14,7 @@ import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag03;
 import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag04;
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     public static String usuario = "1";
 
