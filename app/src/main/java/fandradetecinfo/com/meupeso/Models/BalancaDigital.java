@@ -13,6 +13,7 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
 
     private String TABLE_NAME = "balancadigital";
 
+    private long id;
     private String id_usuario;
     private String data_registro;
     private String peso;
@@ -20,6 +21,10 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
     private String hidratacao;
     private String musculo;
     private String osso;
+
+    public long getId() {
+        return id;
+    }
 
     public BalancaDigital(Context ctx) {
         super(ctx);
@@ -40,6 +45,10 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
 
     public void setData_registro(String data_registro) {
         this.data_registro = tratarData(data_registro);
+    }
+
+    public void setData(String data_registro) {
+        this.data_registro = data_registro;
     }
 
     public String getPeso() {
@@ -86,6 +95,19 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
     protected String tratarData(String data)
     {
         return data.substring(6, 10) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
+    }
+
+    public Cursor exibirRegistros()
+    {
+        try
+        {
+            String sql = "SELECT id_usuario, data_registro, peso"
+                    + " FROM balancadigital"
+                    + " ORDER BY data_registro desc";
+            return buscarCursor(sql);
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 
     public Cursor exibirRegistros(String usuario)

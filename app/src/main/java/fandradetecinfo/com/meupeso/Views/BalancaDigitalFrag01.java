@@ -13,10 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.List;
 
 import fandradetecinfo.com.meupeso.Controllers.BalancaDigitalController;
+import fandradetecinfo.com.meupeso.Models.BalancaDigital;
 import fandradetecinfo.com.meupeso.PrefsHandler;
 import fandradetecinfo.com.meupeso.R;
+import fandradetecinfo.com.meupeso.RegistroAdapter;
 
 public class BalancaDigitalFrag01 extends Fragment
 {
@@ -30,6 +35,8 @@ public class BalancaDigitalFrag01 extends Fragment
     private Context ctx;
 
     PrefsHandler prefs;
+
+	private ListView minhaLista;
 
     private BalancaDigitalController controller;
 
@@ -45,10 +52,31 @@ public class BalancaDigitalFrag01 extends Fragment
                 tratarAdicionarRegistro();
             }
         });
+		
+		minhaLista = (ListView) vw.findViewById(R.id.lstRegistro);
+        registerForContextMenu(minhaLista);
+
+        this.controller = new BalancaDigitalController(getActivity());
 
         return vw;
     }
 
+
+    @Override
+    public void onResume() {
+        carregaLista();
+        super.onResume();
+    }
+	
+	private void carregaLista() {
+
+        List<BalancaDigital> lstRegistro = controller.getLista(ctx);
+
+        RegistroAdapter adapter = new RegistroAdapter(lstRegistro, getActivity());
+
+        this.minhaLista.setAdapter(adapter);
+    }
+	
     private void tratarAdicionarRegistro()
     {
         Intent objIntent = new Intent(getActivity(), BalancaDigitalActivity.class);

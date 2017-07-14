@@ -2,6 +2,7 @@ package fandradetecinfo.com.meupeso.Controllers;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -129,6 +130,39 @@ public class BalancaDigitalController extends _BaseController {
         model.insert(content);
 
         model.close();
+    }
+
+    public List<BalancaDigital> getLista(Context ctx){
+
+        List<BalancaDigital> lstRegistro = new ArrayList<BalancaDigital>();
+        model.open();
+        int maxRegistros = 5;
+        int curRegistro = 1;
+        try
+        {
+            Cursor c = model.exibirRegistros();
+
+            while ((c.moveToNext())) {
+
+                BalancaDigital reg = new BalancaDigital(ctx);
+
+                reg.setId_usuario(c.getString(c.getColumnIndex("id_usuario")));
+                reg.setData(c.getString(c.getColumnIndex("data_registro")));
+                reg.setPeso(c.getString(c.getColumnIndex("peso")));
+
+                lstRegistro.add(reg);
+
+                if (++curRegistro > maxRegistros) break;
+            }
+            c.close();
+        }catch(Exception e)
+        {
+            Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.i("LogX", e.getMessage());
+        }
+        model.close();
+
+        return lstRegistro;
     }
 
     public void carregarGrid(List<String> listHeader, GridView gridViewHeader, GridView gridView, Relatorio rel)

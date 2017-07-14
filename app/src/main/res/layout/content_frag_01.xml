@@ -8,23 +8,12 @@
 
     android:theme="@style/Theme.AppCompat">
 
-    <TextView
-        android:id="@+id/tvFrag01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Balança Digital"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:ignore="HardcodedText" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabFrag01"
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_input_add"
-        android:tint="@color/actionbar_fg_color"
-        app:backgroundTint="@color/actionbar_bg_color" />
+        android:id="@+id/lstRegistro"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 
 </android.support.design.widget.CoordinatorLayout>
