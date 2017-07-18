@@ -57,10 +57,16 @@ public class RegistroAdapter extends BaseAdapter {
 
         if (position % 2 == 0)
         {
+            id_usuario.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
+            data.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
+            peso.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
             linha.setBackgroundColor(activity.getResources().getColor(R.color.actionbar_fg_color));
         }
         else
         {
+            id_usuario.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
+            data.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
+            peso.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
             linha.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimary));
         }
         data.setText(String.valueOf(registro.getData_registro()));

@@ -136,7 +136,7 @@ public class BalancaDigitalController extends _BaseController {
 
         List<BalancaDigital> lstRegistro = new ArrayList<BalancaDigital>();
         model.open();
-        int maxRegistros = 5;
+        int maxRegistros = 6;
         int curRegistro = 1;
         try
         {
