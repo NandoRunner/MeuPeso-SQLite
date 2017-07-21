@@ -32,4 +32,5 @@
     <string name="data_de_nascimento">Data de Nascimento</string>
     <string name="nome">Nome</string>
     <string name="altura">Altura</string>
+    <string name="textview03">TextView</string>
 </resources>

@@ -69,7 +69,7 @@ public class BalancaDigitalController extends _BaseController {
         model.setHidratacao(etHidratacao.getText().toString());
         model.setMusculo(etMusculo.getText().toString());
         model.setOsso(etOsso.getText().toString());
-        model.setId_usuario(String.valueOf(spUsuario.getSelectedItemPosition()));
+        model.setId_usuario(String.valueOf(spUsuario.getSelectedItemPosition()+1));
         model.setData_registro(etData.getText().toString());
     }
 
