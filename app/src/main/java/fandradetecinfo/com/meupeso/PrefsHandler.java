@@ -7,9 +7,7 @@ import android.widget.EditText;
 
 import fandradetecinfo.com.meupeso.Models.BalancaDigital;
 
-/**
- * Created by Fernando on 29/12/2016.
- */
+
 
 public class PrefsHandler {
 

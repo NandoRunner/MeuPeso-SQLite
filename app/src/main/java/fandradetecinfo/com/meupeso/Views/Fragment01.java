@@ -7,9 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +20,7 @@ import fandradetecinfo.com.meupeso.PrefsHandler;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.RegistroAdapter;
 
-public class BalancaDigitalFrag01 extends Fragment
+public class Fragment01 extends Fragment
 {
     private String peso;
     private String gordura;
@@ -79,14 +76,14 @@ public class BalancaDigitalFrag01 extends Fragment
 	
     private void tratarAdicionarRegistro()
     {
-        Intent objIntent = new Intent(getActivity(), BalancaDigitalActivity.class);
+        Intent objIntent = new Intent(getActivity(), RegistroActivity.class);
         startActivity(objIntent);
     }
 
 
-    public static BalancaDigitalFrag01 newInstance(String text)
+    public static Fragment01 newInstance(String text)
     {
-        BalancaDigitalFrag01 f = new BalancaDigitalFrag01();
+        Fragment01 f = new Fragment01();
         Bundle b = new Bundle();
         b.putString("msg", text);
 
@@ -104,6 +101,4 @@ public class BalancaDigitalFrag01 extends Fragment
             if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
-
-
 }

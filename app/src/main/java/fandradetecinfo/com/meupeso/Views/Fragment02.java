@@ -19,7 +19,7 @@ import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Relatorio;
 
-public class BalancaDigitalFrag02 extends Fragment {
+public class Fragment02 extends Fragment {
 
     private BalancaDigitalController controller;
     private View vw;
@@ -36,9 +36,9 @@ public class BalancaDigitalFrag02 extends Fragment {
         return vw;
     }
 
-    public static BalancaDigitalFrag02 newInstance(String text) {
+    public static Fragment02 newInstance(String text) {
 
-        BalancaDigitalFrag02 f = new BalancaDigitalFrag02();
+        Fragment02 f = new Fragment02();
         Bundle b = new Bundle();
         b.putString("msg", text);
 

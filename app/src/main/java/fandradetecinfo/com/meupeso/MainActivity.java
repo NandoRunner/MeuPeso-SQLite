@@ -2,17 +2,15 @@ package fandradetecinfo.com.meupeso;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag01;
-import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag02;
-import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag03;
-import fandradetecinfo.com.meupeso.Views.BalancaDigitalFrag04;
-import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+import fandradetecinfo.com.meupeso.Views.Fragment01;
+import fandradetecinfo.com.meupeso.Views.Fragment02;
+import fandradetecinfo.com.meupeso.Views.Fragment03;
+import fandradetecinfo.com.meupeso.Views.Fragment04;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
-        SQLiteStudioService.instance().setPort(9999);
-        SQLiteStudioService.instance().setPassword("12345678");
-        SQLiteStudioService.instance().start(this);
+        //SQLiteStudioService.instance().setPort(9999);
+        //SQLiteStudioService.instance().setPassword("12345678");
+        //SQLiteStudioService.instance().start(this);
     }
 
     @Override
     protected void onDestroy() {
-        SQLiteStudioService.instance().stop();
+        //SQLiteStudioService.instance().stop();
         super.onDestroy();
     }
 
@@ -48,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
             switch (pos) {
 
                 case 0:
-                    return BalancaDigitalFrag01.newInstance("Cadastro");
+                    return Fragment01.newInstance("Cadastro");
                 case 1:
-                    return BalancaDigitalFrag02.newInstance("Registros do usuário: ");
+                    return Fragment02.newInstance("Registros do usuário: ");
                 case 2:
-                    return BalancaDigitalFrag03.newInstance("Médias do usuário: ");
+                    return Fragment03.newInstance("Médias do usuário: ");
                 case 3:
-                    return BalancaDigitalFrag04.newInstance("Totalizadores");
+                    return Fragment04.newInstance("Totalizadores");
                 default:
-                    return BalancaDigitalFrag02.newInstance("Registros do usuário: ");
+                    return Fragment02.newInstance("Registros do usuário: ");
             }
         }
 

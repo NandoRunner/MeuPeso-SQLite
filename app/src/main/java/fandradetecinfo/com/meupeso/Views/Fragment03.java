@@ -15,29 +15,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fandradetecinfo.com.meupeso.Controllers.BalancaDigitalController;
+import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Relatorio;
 
-public class BalancaDigitalFrag04 extends Fragment {
+public class Fragment03 extends Fragment {
 
     private BalancaDigitalController controller;
     private View vw;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        vw = inflater.inflate(R.layout.frag_04, container, false);
+        vw = inflater.inflate(R.layout.frag_03, container, false);
 
-        TextView tv = (TextView) vw.findViewById(R.id.tvFrag04);
-        tv.setText(getArguments().getString("msg"));
+        TextView tv = (TextView) vw.findViewById(R.id.tvFrag03);
+        tv.setText(getArguments().getString("msg") + MainActivity.usuario);
 
         this.controller = new BalancaDigitalController(getActivity());
 
         return vw;
     }
 
-    public static BalancaDigitalFrag04 newInstance(String text) {
+    public static Fragment03 newInstance(String text) {
 
-        BalancaDigitalFrag04 f = new BalancaDigitalFrag04();
+        Fragment03 f = new Fragment03();
         Bundle b = new Bundle();
         b.putString("msg", text);
 
@@ -54,7 +55,7 @@ public class BalancaDigitalFrag04 extends Fragment {
             {
                 a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 this.montarGrid();
-                Log.i("LogX", "Frag 04 - Carregou grid");
+                Log.i("LogX", "Frag 03 - Carregou grid");
             }
         }
     }
@@ -72,18 +73,17 @@ public class BalancaDigitalFrag04 extends Fragment {
     private void montarGrid()
     {
         List<String> listHeader = new ArrayList<String>();
-        listHeader.add("Usuario");
-        listHeader.add("Nome");
-        listHeader.add("Sexo");
-        listHeader.add("Peso Médio");
-        listHeader.add("IMC");
-        listHeader.add("Registros");
+        listHeader.add("Periodo");
+        listHeader.add("Peso");
+        listHeader.add("Gord.");
+        listHeader.add("Hidr.");
+        listHeader.add("Musc.");
 
-        GridView gridViewHeader=(GridView) vw.findViewById(R.id.grvFrag04Header);
+        GridView gridViewHeader=(GridView) vw.findViewById(R.id.grvFrag03Header);
 
-        GridView gridView=(GridView) vw.findViewById(R.id.grvFrag04);
-        
-        controller.carregarGrid(listHeader, gridViewHeader, gridView, Relatorio.Totais);
+        GridView gridView = (GridView) vw.findViewById(R.id.grvFrag03);
+ 
+        controller.carregarGrid(listHeader, gridViewHeader, gridView, Relatorio.Medias);
     }
 
 }

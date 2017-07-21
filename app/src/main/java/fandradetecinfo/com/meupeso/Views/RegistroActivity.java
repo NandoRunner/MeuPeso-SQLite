@@ -1,6 +1,5 @@
 package fandradetecinfo.com.meupeso.Views;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +27,7 @@ import fandradetecinfo.com.meupeso.MainActivity;
 import fandradetecinfo.com.meupeso.PrefsHandler;
 import fandradetecinfo.com.meupeso.R;
 
-public class BalancaDigitalActivity extends AppCompatActivity
+public class RegistroActivity extends AppCompatActivity
 {
     private String peso;
     private String gordura;
@@ -46,11 +45,10 @@ public class BalancaDigitalActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_balanca_digital);
+        setContentView(R.layout.activity_registro);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarBalancaDigital);
         setSupportActionBar(toolbar);
 
-        //vw = inflater.inflate(R.layout.activity_balanca_digital, container, false);
 
         ctx = getBaseContext();
         prefs = new PrefsHandler(ctx);
@@ -96,7 +94,7 @@ public class BalancaDigitalActivity extends AppCompatActivity
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    NavUtils.navigateUpFromSameTask(BalancaDigitalActivity.this);
+                    NavUtils.navigateUpFromSameTask(RegistroActivity.this);
                 }
             });
             toolbar.inflateMenu(R.menu.menu_registro);
@@ -195,11 +193,7 @@ public class BalancaDigitalActivity extends AppCompatActivity
             controller.inserir();
 
             prefs.salvar(controller.getModel());
-            /*
-            handler=new DBHandler(this);//getting the context object
-            handler.open();
-            long id = handler.InserirBalancaDigital(minhaBalanca);
-            handler.close();*/
+
 
             Log.i("LogX", "Registro gravado!");
             return true;

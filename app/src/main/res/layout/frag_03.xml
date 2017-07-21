@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_green_light"
     android:orientation="horizontal"
-    android:id="@+id/layFrag03">
+    android:id="@+id/layFrag03"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/tvFrag03"
@@ -13,8 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="26sp"
         android:text="TextView"
-        android:layout_centerHorizontal="true"
-        tools:ignore="HardcodedText" />
+        android:layout_centerHorizontal="true" />
 
     <GridView
         android:layout_marginTop="10dp"
@@ -36,7 +36,9 @@
         android:fastScrollEnabled="true"
         android:numColumns="5"
         tools:style="@android:style/Widget.Material.GridView"
-        android:stretchMode="columnWidth">
+        android:stretchMode="columnWidth"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
     </GridView>
 
 </RelativeLayout>

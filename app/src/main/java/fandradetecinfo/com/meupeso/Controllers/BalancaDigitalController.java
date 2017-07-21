@@ -21,9 +21,7 @@ import fandradetecinfo.com.meupeso.Models.BalancaDigital;
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Relatorio;
 
-/**
- * Created by Fernando on 14/02/2017.
- */
+
 
 public class BalancaDigitalController extends _BaseController {
 

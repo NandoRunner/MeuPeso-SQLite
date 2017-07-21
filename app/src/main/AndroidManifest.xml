@@ -22,11 +22,11 @@
         <activity
             android:name=".Views.UsuarioActivity"
             android:label="Usuário"
-            android:parentActivityName=".Views.BalancaDigitalActivity"
+            android:parentActivityName=".Views.RegistroActivity"
 	        android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Views.BalancaDigitalActivity"
+            android:name=".Views.RegistroActivity"
             android:label="Registro"
             android:parentActivityName=".MainActivity"
 	        android:theme="@style/AppTheme.NoActionBar">
