@@ -5,12 +5,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import fandradetecinfo.com.meupeso.Models.Usuario;
+
 import fandradetecinfo.com.meupeso.R;
 import fandradetecinfo.com.meupeso.Views.UsuarioActivity;
 
 /**
  * Created by Fernando on 10/02/2017.
  */
+
 
 public class UsuarioController extends _BaseController {
 
@@ -64,9 +66,8 @@ public class UsuarioController extends _BaseController {
         if (!validarCampo(etNome)) return false;
         if (!validarLista(spSexo, "Sexo", 1)) return false;
         if (!validarCampo(etAltura)) return false;
-        if (!validarCampo(etData)) return false;
+        return validarCampo(etData);
 
-        return true;
     }
 
     public void alertarUsuarioExistente()

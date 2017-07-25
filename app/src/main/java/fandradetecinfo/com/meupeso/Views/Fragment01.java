@@ -28,7 +28,6 @@ public class Fragment01 extends Fragment
     private String musculo;
     private String osso;
 
-    private View vw;
     private Context ctx;
 
     PrefsHandler prefs;
@@ -40,7 +39,7 @@ public class Fragment01 extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        vw = inflater.inflate(R.layout.frag_01, container, false);
+        View vw = inflater.inflate(R.layout.frag_01, container, false);
 
         FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.fabFrag01);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 public class BalancaDigital extends _BaseModel implements Serializable  {
 
-    private String TABLE_NAME = "balancadigital";
-
     private long id;
     private String id_usuario;
     private String data_registro;
@@ -28,6 +26,7 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
 
     public BalancaDigital(Context ctx) {
         super(ctx);
+        String TABLE_NAME = "balancadigital";
         this.table = TABLE_NAME;
     }
 

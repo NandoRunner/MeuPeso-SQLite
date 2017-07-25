@@ -1,6 +1,5 @@
 package fandradetecinfo.com.meupeso.Views;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;

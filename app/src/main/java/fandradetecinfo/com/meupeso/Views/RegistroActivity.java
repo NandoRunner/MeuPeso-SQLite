@@ -29,18 +29,8 @@ import fandradetecinfo.com.meupeso.R;
 
 public class RegistroActivity extends AppCompatActivity
 {
-    private String peso;
-    private String gordura;
-    private String hidratacao;
-    private String musculo;
-    private String osso;
-
-    private View vw;
-    private Context ctx;
 
     PrefsHandler prefs;
-
-    private BalancaDigitalController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +40,7 @@ public class RegistroActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        ctx = getBaseContext();
+        Context ctx = getBaseContext();
         prefs = new PrefsHandler(ctx);
 
         ImageButton myImgBtn = (ImageButton) findViewById(R.id.imageButton);
@@ -174,7 +164,7 @@ public class RegistroActivity extends AppCompatActivity
     {
         try
         {
-            this.controller = new BalancaDigitalController(this);
+            BalancaDigitalController controller = new BalancaDigitalController(this);
 
             if(!controller.validarDados()) return false;
 

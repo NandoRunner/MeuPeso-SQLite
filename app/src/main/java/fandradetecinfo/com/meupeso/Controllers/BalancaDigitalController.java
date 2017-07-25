@@ -81,8 +81,7 @@ public class BalancaDigitalController extends _BaseController {
         if (!validarCampo(etGordura)) return false;
         if (!validarCampo(etHidratacao)) return false;
         if (!validarCampo(etMusculo)) return false;
-        if (!validarCampo(etOsso)) return false;
-        return true;
+        return validarCampo(etOsso);
     }
 
     public boolean registroExistente()

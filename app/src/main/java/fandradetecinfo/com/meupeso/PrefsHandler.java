@@ -11,13 +11,12 @@ import fandradetecinfo.com.meupeso.Models.BalancaDigital;
 
 public class PrefsHandler {
 
-    private String MINHAS_PREFS = "MEUPESO_PREFS";
-
     Context context;
     SharedPreferences shp;
 
     public PrefsHandler(Context ctx) {
         this.context = ctx;
+        String MINHAS_PREFS = "MEUPESO_PREFS";
         shp = context.getSharedPreferences(MINHAS_PREFS, 0);
     }
 
@@ -40,7 +39,7 @@ public class PrefsHandler {
         editor.putFloat("hidratacao"+u, Float.parseFloat(balanca.getHidratacao()));
         editor.putFloat("musculo"+u, Float.parseFloat(balanca.getMusculo()));
         editor.putFloat("osso"+u, Float.parseFloat(balanca.getOsso()));
-        editor.commit();
+        editor.apply();
     }
 
     public boolean registroAnteriorIdentico(BalancaDigital balanca)

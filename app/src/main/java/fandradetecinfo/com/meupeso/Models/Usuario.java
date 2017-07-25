@@ -10,8 +10,6 @@ import java.io.Serializable;
 
 public class Usuario extends _BaseModel implements Serializable  {
 
-    private String TABLE_NAME = "usuario";
-
     public long getId() {
         return id;
     }
@@ -30,6 +28,7 @@ public class Usuario extends _BaseModel implements Serializable  {
     public Usuario(Context ctx)
     {
         super(ctx);
+        String TABLE_NAME = "usuario";
         this.table = TABLE_NAME;
     }
 
