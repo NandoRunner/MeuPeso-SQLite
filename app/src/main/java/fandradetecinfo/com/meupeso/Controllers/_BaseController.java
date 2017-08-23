@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Hashtable;
+import java.util.Map;
 import fandradetecinfo.com.meupeso.R;
 
 /**
@@ -18,6 +20,14 @@ import fandradetecinfo.com.meupeso.R;
 public class _BaseController {
 
     protected Activity activity;
+    protected Map<Integer, String> mapUsuario = new Hashtable<>();
+
+    public _BaseController()
+    {
+        mapUsuario.put(1, "Nando");
+        mapUsuario.put(2, "Deia");
+        mapUsuario.put(3, "Gui");
+    }
 
     protected boolean validarCampo(EditText edt) {
         if (edt.getText().toString().length() == 0) {

@@ -94,7 +94,7 @@ public class _BaseModel {
     protected Cursor buscarCursor(String sql, String[] args)
     {
         try {
-            //db.execSQL("update balancadigital set peso = 77.9 where id = 45");
+            //db.execSQL("update balancadigital set peso = 78.9 where peso = 789.7");
             //db.execSQL("update balancadigital set id_usuario = 3 where id_usuario = 2 and peso < 20");
 
             return db.rawQuery(sql, args, null);

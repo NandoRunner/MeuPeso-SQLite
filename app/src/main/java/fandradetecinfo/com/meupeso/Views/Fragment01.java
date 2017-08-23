@@ -22,12 +22,6 @@ import fandradetecinfo.com.meupeso.RegistroAdapter;
 
 public class Fragment01 extends Fragment
 {
-    private String peso;
-    private String gordura;
-    private String hidratacao;
-    private String musculo;
-    private String osso;
-
     private Context ctx;
 
     PrefsHandler prefs;

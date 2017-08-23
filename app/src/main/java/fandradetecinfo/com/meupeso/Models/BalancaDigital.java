@@ -35,7 +35,8 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
     }
 
     public void setId_usuario(String id_usuario) {
-        this.id_usuario = String.valueOf(Integer.parseInt(id_usuario)) ;
+        //this.id_usuario = String.valueOf(Integer.parseInt(id_usuario)) ;
+        this.id_usuario = id_usuario;
     }
 
     public String getData_registro() {

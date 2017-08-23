@@ -23,16 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-
-        //SQLiteStudioService.instance().setPort(9999);
-        //SQLiteStudioService.instance().setPassword("12345678");
-        //SQLiteStudioService.instance().start(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        //SQLiteStudioService.instance().stop();
-        super.onDestroy();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

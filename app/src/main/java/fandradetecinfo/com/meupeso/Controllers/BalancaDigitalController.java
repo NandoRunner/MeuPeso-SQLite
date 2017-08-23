@@ -143,7 +143,7 @@ public class BalancaDigitalController extends _BaseController {
 
                 BalancaDigital reg = new BalancaDigital(ctx);
 
-                reg.setId_usuario(c.getString(c.getColumnIndex("id_usuario")));
+                reg.setId_usuario(mapUsuario.get(c.getInt(c.getColumnIndex("id_usuario"))));
                 reg.setData(c.getString(c.getColumnIndex("data_registro")));
                 reg.setPeso(c.getString(c.getColumnIndex("peso")));
 
