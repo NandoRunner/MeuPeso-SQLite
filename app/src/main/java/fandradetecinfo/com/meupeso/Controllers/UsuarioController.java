@@ -82,12 +82,16 @@ public class UsuarioController extends _BaseController {
         String sql = "SELECT count(*) FROM usuario WHERE nome = ?";
         String args[] = { model.getNome() };
 
-        return model.exists(sql, args);
+		model.open();
+        boolean ret = model.exists(sql, args);
+        model.close();
+
+        return ret;
     }
 
     public void alertarUsuarioExistente()
     {
-        montarAlerta("Novo Usuário", "Usuário já cadastrado!");
+        montarAlerta("Meu Peso Diário ->  Novo Usuário", "Usuário já cadastrado!");
     }
 
     public void inserir()
@@ -98,7 +102,20 @@ public class UsuarioController extends _BaseController {
         content.put("altura", model.getAltura());
         content.put("data_nascimento", model.getDataNascimento());
 
+        model.open();
+
         model.insert(content);
+
+        model.close();
+    }
+
+    public void apagar()
+    {
+        model.open();
+
+        model.deleteById(String.valueOf(model.getId()));
+
+        model.close();
     }
 
     public List<Usuario> getLista(Context ctx){
@@ -114,9 +131,11 @@ public class UsuarioController extends _BaseController {
 
                 Usuario reg = new Usuario(ctx);
 
+                reg.setId(c.getLong(c.getColumnIndex("id")));
                 reg.setNome(c.getString(c.getColumnIndex("nome")));
                 reg.setDataNascimento(c.getString(c.getColumnIndex("data_nascimento")));
                 reg.setAltura(c.getString(c.getColumnIndex("altura")));
+                reg.setSexo(c.getString(c.getColumnIndex("sexo_masculino")));
 
                 lstRegistro.add(reg);
 

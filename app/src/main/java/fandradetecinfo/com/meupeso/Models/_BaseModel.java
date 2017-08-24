@@ -74,6 +74,16 @@ public class _BaseModel {
         }
     }
 
+    public long deleteById(String Id)
+    {
+        try {
+            String args[] = { Id };
+            return db.delete(table, "id = ?", args);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public boolean exists(String sql, String[] args)
     {
         boolean ret = false;

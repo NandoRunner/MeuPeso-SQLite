@@ -70,7 +70,7 @@ public class Usuario extends _BaseModel implements Serializable  {
     {
         try
         {
-            String sql = "SELECT nome, altura, data_nascimento"
+            String sql = "SELECT id, nome, altura, data_nascimento, sexo_masculino"
                     + " FROM usuario"
                     + " ORDER BY nome";
             return buscarCursor(sql);

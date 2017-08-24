@@ -7,11 +7,15 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -52,6 +56,38 @@ public class Fragment00 extends Fragment
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        final Usuario usuarioSelecionado = (Usuario) minhaLista.getAdapter().getItem(info.position);
+
+        final MenuItem itemPadrao = menu.add("Definir como Usuário Padrão");
+        final MenuItem itemEditar = menu.add("Editar Usuário");
+        final MenuItem itemApagar = menu.add("Apagar Usuário");
+
+        itemPadrao.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+        {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                MainActivity.usuario = String.valueOf(usuarioSelecionado.getId());
+                String msg = "Usuário " + MainActivity.usuario + " selecionado!";
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
+        itemEditar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+        {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });
+        itemApagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+        {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                apagarUsuario(usuarioSelecionado.getId());
+                return false;
+            }
+        });
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
@@ -95,6 +131,25 @@ public class Fragment00 extends Fragment
         if(isVisibleToUser) {
             Activity a = getActivity();
             if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+    private boolean apagarUsuario(long id)
+    {
+        try
+        {
+            controller.getModel().setId(id);
+            controller.apagar();
+            carregaLista();
+
+            Log.i("LogX", "Usuário apagado!");
+            return true;
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.i("LogX", e.getMessage());
+            return false;
         }
     }
 }
