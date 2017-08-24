@@ -25,7 +25,7 @@ import fandradetecinfo.com.meupeso.R;
 
 public class UsuarioActivity extends AppCompatActivity
 {
-    private UsuarioController controller;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class UsuarioActivity extends AppCompatActivity
             }
         });
 
-        this.controller = new UsuarioController(this);
 
         if (null != toolbar) {
             toolbar.setNavigationIcon(R.drawable.back_w_48px);
@@ -120,6 +119,7 @@ public class UsuarioActivity extends AppCompatActivity
     {
         try
         {
+			UsuarioController controller = new UsuarioController(this);
             if(!controller.validarDados()) return false;
 
             controller.pegarDoFormulario();
@@ -130,12 +130,6 @@ public class UsuarioActivity extends AppCompatActivity
             }
 
             controller.inserir();
-
-            /*
-            handler=new DBHandler(this);//getting the context object
-            handler.open();
-            long id = handler.inserirUsuario(meuUsuario);
-            handler.close();*/
 
             Log.i("LogX", "Usuário cadastrado!");
             return true;

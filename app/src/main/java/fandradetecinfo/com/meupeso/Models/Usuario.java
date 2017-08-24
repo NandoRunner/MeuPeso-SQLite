@@ -1,6 +1,7 @@
 package fandradetecinfo.com.meupeso.Models;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import java.io.Serializable;
 
@@ -65,5 +66,16 @@ public class Usuario extends _BaseModel implements Serializable  {
         this.dataNascimento = dataNascimento;
     }
 
-
+    public Cursor exibirRegistros()
+    {
+        try
+        {
+            String sql = "SELECT nome, altura, data_nascimento"
+                    + " FROM usuario"
+                    + " ORDER BY nome";
+            return buscarCursor(sql);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

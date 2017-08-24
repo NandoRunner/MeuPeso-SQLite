@@ -1,13 +1,20 @@
 package fandradetecinfo.com.meupeso.Controllers;
 
+import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import fandradetecinfo.com.meupeso.Models.Usuario;
 
 import fandradetecinfo.com.meupeso.R;
-import fandradetecinfo.com.meupeso.Views.UsuarioActivity;
 
 /**
  * Created by Fernando on 10/02/2017.
@@ -23,7 +30,7 @@ public class UsuarioController extends _BaseController {
     private EditText etData;
     private Spinner spSexo;
 
-    public UsuarioController(UsuarioActivity activity) {
+    public UsuarioController(Activity activity) {
 
         this.activity = activity;
         this.model = new Usuario(activity.getBaseContext());
@@ -70,17 +77,17 @@ public class UsuarioController extends _BaseController {
 
     }
 
-    public void alertarUsuarioExistente()
-    {
-        montarAlerta("Novo Usuário", "Usuário já cadastrado!");
-    }
-
     public boolean usuarioExistente()
     {
         String sql = "SELECT count(*) FROM usuario WHERE nome = ?";
         String args[] = { model.getNome() };
 
         return model.exists(sql, args);
+    }
+
+    public void alertarUsuarioExistente()
+    {
+        montarAlerta("Novo Usuário", "Usuário já cadastrado!");
     }
 
     public void inserir()
@@ -92,5 +99,37 @@ public class UsuarioController extends _BaseController {
         content.put("data_nascimento", model.getDataNascimento());
 
         model.insert(content);
+    }
+
+    public List<Usuario> getLista(Context ctx){
+
+        List<Usuario> lstRegistro = new ArrayList<Usuario>();
+        model.open();
+
+        try
+        {
+            Cursor c = model.exibirRegistros();
+
+            while ((c.moveToNext())) {
+
+                Usuario reg = new Usuario(ctx);
+
+                reg.setNome(c.getString(c.getColumnIndex("nome")));
+                reg.setDataNascimento(c.getString(c.getColumnIndex("data_nascimento")));
+                reg.setAltura(c.getString(c.getColumnIndex("altura")));
+
+                lstRegistro.add(reg);
+
+
+            }
+            c.close();
+        }catch(Exception e)
+        {
+            Toast.makeText(activity, e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.i("LogX", e.getMessage());
+        }
+        model.close();
+
+        return lstRegistro;
     }
 }

@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,48 +15,44 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import fandradetecinfo.com.meupeso.Controllers.BalancaDigitalController;
+import fandradetecinfo.com.meupeso.Controllers.UsuarioController;
 import fandradetecinfo.com.meupeso.MainActivity;
-import fandradetecinfo.com.meupeso.Models.BalancaDigital;
-import fandradetecinfo.com.meupeso.PrefsHandler;
+import fandradetecinfo.com.meupeso.Models.Usuario;
 import fandradetecinfo.com.meupeso.R;
-import fandradetecinfo.com.meupeso.RegistroAdapter;
+import fandradetecinfo.com.meupeso.UsuarioAdapter;
 
-public class Fragment01 extends Fragment
+public class Fragment00 extends Fragment
 {
     private Context ctx;
 
-    PrefsHandler prefs;
-
 	private ListView minhaLista;
 
-    private BalancaDigitalController controller;
+    private UsuarioController controller;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View vw = inflater.inflate(R.layout.frag_01, container, false);
+        View vw = inflater.inflate(R.layout.frag_00, container, false);
 
-        FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.fabFrag01);
+        FloatingActionButton fab = (FloatingActionButton) vw.findViewById(R.id.fabFrag00);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tratarAdicionarRegistro();
+                tratarAdicionarUsuario();
             }
         });
 		
-		minhaLista = (ListView) vw.findViewById(R.id.lstRegistro);
+		minhaLista = (ListView) vw.findViewById(R.id.lstUsuario);
         registerForContextMenu(minhaLista);
 
-        this.controller = new BalancaDigitalController(getActivity());
+        this.controller = new UsuarioController(getActivity());
 
         return vw;
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        ((MainActivity)getActivity()).getViewPager().setCurrentItem(1);
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     @Override
@@ -66,23 +63,23 @@ public class Fragment01 extends Fragment
 	
 	private void carregaLista() {
 
-        List<BalancaDigital> lstRegistro = controller.getLista(ctx);
+        List<Usuario> lstUsuario = controller.getLista(ctx);
 
-        RegistroAdapter adapter = new RegistroAdapter(lstRegistro, getActivity());
+        UsuarioAdapter adapter = new UsuarioAdapter(lstUsuario, getActivity());
 
         this.minhaLista.setAdapter(adapter);
     }
 	
-    private void tratarAdicionarRegistro()
+    private void tratarAdicionarUsuario()
     {
-        Intent objIntent = new Intent(getActivity(), RegistroActivity.class);
+        Intent objIntent = new Intent(getActivity(), UsuarioActivity.class);
         startActivity(objIntent);
     }
 
 
-    public static Fragment01 newInstance(String text)
+    public static Fragment00 newInstance(String text)
     {
-        Fragment01 f = new Fragment01();
+        Fragment00 f = new Fragment00();
         Bundle b = new Bundle();
         b.putString("msg", text);
 

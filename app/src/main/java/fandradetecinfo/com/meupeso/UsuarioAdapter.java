@@ -46,14 +46,12 @@ public class UsuarioAdapter extends BaseAdapter {
 
         if (linha == null)
         {
-            linha = this.activity.getLayoutInflater().inflate(R.layout.cell_usuario, parent, false);
+            linha = this.activity.getLayoutInflater().inflate(R.layout.cell_frag_00, parent, false);
         }
 
-        TextView id = (TextView) linha.findViewById(R.id.txtUsuarioID);
-        TextView nome = (TextView) linha.findViewById(R.id.txtUsuarioNome);
-        TextView sexo = (TextView) linha.findViewById(R.id.txtUsuarioSexo);
-        TextView altura = (TextView) linha.findViewById(R.id.txtUsuarioAltura);
-        TextView dataNascimento = (TextView) linha.findViewById(R.id.txtUsuarioDataNascimento);
+        TextView nome = (TextView) linha.findViewById(R.id.txtUsuNome);
+        TextView altura = (TextView) linha.findViewById(R.id.txtUsuAltura);
+        TextView dataNascimento = (TextView) linha.findViewById(R.id.txtUsuDataNascimento);
 
         if (position % 2 == 0)
         {
@@ -63,9 +61,7 @@ public class UsuarioAdapter extends BaseAdapter {
         {
             linha.setBackgroundColor(activity.getResources().getColor(R.color.actionbar_bg_color));
         }
-        id.setText(String.valueOf(usuario.getId()));
         nome.setText(usuario.getNome());
-        sexo.setText(usuario.getSexo());
         altura.setText(usuario.getAltura());
         dataNascimento.setText(usuario.getDataNascimento());
 
