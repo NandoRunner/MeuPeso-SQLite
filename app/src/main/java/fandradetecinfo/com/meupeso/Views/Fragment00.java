@@ -139,6 +139,14 @@ public class Fragment00 extends Fragment
         try
         {
             controller.getModel().setId(id);
+
+            if (controller.possuiRegistro())
+            {
+                Toast.makeText(getActivity(), "Usuário possui registros", Toast.LENGTH_LONG).show();
+                Log.i("LogX", "Usuário possui registros");
+                return false;
+            }
+
             controller.apagar();
             carregaLista();
 

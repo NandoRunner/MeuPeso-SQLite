@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Fernando on 14/02/2017.
@@ -26,8 +29,7 @@ public class BalancaDigital extends _BaseModel implements Serializable  {
 
     public BalancaDigital(Context ctx) {
         super(ctx);
-        String TABLE_NAME = "balancadigital";
-        this.table = TABLE_NAME;
+        this.table = "balancadigital";
     }
 
     public String getId_usuario() {

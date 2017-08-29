@@ -156,32 +156,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <Spinner
 
                     android:id="@+id/spinnerUsuario"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:ems="10"
                     android:entries="@array/user_arrays"
                     android:focusable="true"
                     android:prompt="@string/user_prompt"
                     android:textAlignment="center" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/adicionar_usuario"
-                    android:cropToPadding="false"
-                    android:src="@drawable/plus_gray_48px"
-                    android:visibility="visible"
-                    tools:ignore="RtlHardcoded" />
 
             </LinearLayout>
 

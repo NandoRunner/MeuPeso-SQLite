@@ -22,7 +22,7 @@
         <activity
             android:name=".Views.UsuarioActivity"
             android:label="Usuário"
-            android:parentActivityName=".Views.RegistroActivity"
+            android:parentActivityName=".MainActivity"
 	        android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fandradetecinfo.com.meupeso.Models.BalancaDigital;
@@ -54,22 +55,21 @@ public class RegistroAdapter extends BaseAdapter {
         TextView data = (TextView) linha.findViewById(R.id.txtRegData);
         TextView id_usuario = (TextView) linha.findViewById(R.id.txtRegUsuario);
         TextView peso = (TextView) linha.findViewById(R.id.txtRegPeso);
+        ArrayList<TextView> lstTV = new ArrayList<>();
+        lstTV.add(data);
+        lstTV.add(id_usuario);
+        lstTV.add(peso);
+        int color = position % 2 != 0 ? R.color.colorWhite : R.color.colorBlack;
 
-        if (position % 2 == 0)
+        for( TextView aux : lstTV )
         {
-            id_usuario.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
-            data.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
-            peso.setTextColor(activity.getResources().getColorStateList(R.color.colorBlack));
-            linha.setBackgroundColor(activity.getResources().getColor(R.color.actionbar_fg_color));
+            aux.setTextColor(activity.getResources().getColor(color));
         }
-        else
-        {
-            id_usuario.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
-            data.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
-            peso.setTextColor(activity.getResources().getColorStateList(R.color.colorWhite));
-            linha.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimary));
-        }
-        data.setText(String.valueOf(registro.getData_registro()));
+		
+        linha.setBackgroundColor(activity.getResources().getColor((position % 2 != 0 ?
+                    R.color.colorPrimary : R.color.actionbar_fg_color)));
+					
+        data.setText(String.valueOf(registro.getDataFormatada(registro.getData_registro())));
         id_usuario.setText(registro.getId_usuario());
         peso.setText(registro.getPeso());
         return linha;

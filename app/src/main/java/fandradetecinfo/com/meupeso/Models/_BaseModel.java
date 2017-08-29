@@ -6,6 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class _BaseModel {
 
     protected String table;
@@ -104,7 +109,7 @@ public class _BaseModel {
     protected Cursor buscarCursor(String sql, String[] args)
     {
         try {
-            //db.execSQL("update balancadigital set peso = 78.9 where peso = 789.7");
+            //db.execSQL("update usuario set id = 4 where id = 5");
             //db.execSQL("update balancadigital set id_usuario = 3 where id_usuario = 2 and peso < 20");
 
             return db.rawQuery(sql, args, null);
@@ -122,5 +127,28 @@ public class _BaseModel {
         }
     }
 
+    public String getDataDiaBr(){
+//        GregorianCalendar calendario = new GregorianCalendar();
+//        int dia = calendario.get(calendario.DAY_OF_MONTH);
+//        int mes = calendario.get(calendario.MONTH) + 1;
+//        int ano = calendario.get(calendario.YEAR);
+//        String dataIguana = String.valueOf(dia + "/" + mes + "/" + ano);
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String diaIguana = df.format(new Date());
+        return diaIguana;
+    }
 
+    public String getDataFormatada(String pData) {
+
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = formato.parse(pData);
+            formato.applyPattern("dd/MM/yyyy");
+            return formato.format(data);
+        }
+        catch (ParseException pe)
+        {
+            return pe.getMessage();
+        }
+    }
 }

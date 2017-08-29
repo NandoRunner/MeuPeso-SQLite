@@ -43,14 +43,6 @@ public class RegistroActivity extends AppCompatActivity
         Context ctx = getBaseContext();
         prefs = new PrefsHandler(ctx);
 
-        ImageButton myImgBtn = (ImageButton) findViewById(R.id.imageButton);
-        myImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v1) {
-                tratarAdicionarUsuario();
-            }
-        });
-
         Spinner mySpn = (Spinner) findViewById(R.id.spinnerUsuario);
         mySpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

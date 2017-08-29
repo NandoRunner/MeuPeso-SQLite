@@ -100,6 +100,7 @@ public class BalancaDigitalController extends _BaseController {
         return ret;
     }
 
+
     public void alertarRegistroAnteriorIdentico()
     {
         montarAlerta("Meu Peso Diário ->  Gravar", "Usuário com registro anterior idêntico!");

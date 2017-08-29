@@ -77,6 +77,21 @@ public class UsuarioController extends _BaseController {
 
     }
 
+    public boolean possuiRegistro()
+    {
+        String sql = "SELECT count(*) FROM balancadigital"
+                + " WHERE id_usuario = ?";
+        String args[] = { String.valueOf(model.getId()) };
+
+        model.open();
+
+        boolean ret = model.exists(sql, args);
+
+        model.close();
+
+        return ret;
+    }
+
     public boolean usuarioExistente()
     {
         String sql = "SELECT count(*) FROM usuario WHERE nome = ?";
@@ -131,15 +146,13 @@ public class UsuarioController extends _BaseController {
 
                 Usuario reg = new Usuario(ctx);
 
-                reg.setId(c.getLong(c.getColumnIndex("id")));
                 reg.setNome(c.getString(c.getColumnIndex("nome")));
-                reg.setDataNascimento(c.getString(c.getColumnIndex("data_nascimento")));
+                reg.setId(c.getLong(c.getColumnIndex("id")));
                 reg.setAltura(c.getString(c.getColumnIndex("altura")));
-                reg.setSexo(c.getString(c.getColumnIndex("sexo_masculino")));
+                reg.setSexoTratado(c.getString(c.getColumnIndex("sexo")));
+                reg.setDataNascimento(c.getString(c.getColumnIndex("data_nascimento")));
 
                 lstRegistro.add(reg);
-
-
             }
             c.close();
         }catch(Exception e)

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fandradetecinfo.com.meupeso.Models.Usuario;
@@ -51,20 +52,39 @@ public class UsuarioAdapter extends BaseAdapter {
 
         TextView nome = (TextView) linha.findViewById(R.id.txtUsuNome);
         TextView altura = (TextView) linha.findViewById(R.id.txtUsuAltura);
-        TextView dataNascimento = (TextView) linha.findViewById(R.id.txtUsuDataNascimento);
+        TextView idade = (TextView) linha.findViewById(R.id.txtUsuIdade);
+        TextView idd = (TextView) linha.findViewById(R.id.txtUsuID);
+        TextView sexo = (TextView) linha.findViewById(R.id.txtUsuSexo);
 
-        if (position % 2 == 0)
+        ArrayList<TextView> lstTV = new ArrayList<>();
+
+        for( int i = 0; i < parent.getChildCount(); i++ )
+            if( parent.getChildAt( i ) instanceof TextView )
+                lstTV.add( (TextView) parent.getChildAt( i ) );
+
+
+//        lstTV.add(nome);
+//        lstTV.add(altura);
+//        lstTV.add(idade);
+//        lstTV.add(idd);
+//        lstTV.add(sexo);
+
+        int color = position % 2 != 0 ? R.color.colorWhite : R.color.colorBlack;
+
+        for( TextView aux : lstTV )
         {
-            linha.setBackgroundColor(activity.getResources().getColor(R.color.actionbar_fg_color));
+            aux.setTextColor(activity.getResources().getColor(color));
         }
-        else
-        {
-            linha.setBackgroundColor(activity.getResources().getColor(R.color.actionbar_bg_color));
-        }
+		
+        linha.setBackgroundColor(activity.getResources().getColor((position % 2 != 0 ?
+                    R.color.colorPrimary : R.color.actionbar_fg_color)));
+					
+					
         nome.setText(usuario.getNome());
         altura.setText(usuario.getAltura());
-        dataNascimento.setText(usuario.getDataNascimento());
-
+        idade.setText(usuario.getIdade());
+        sexo.setText(usuario.getSexo());
+        idd.setText(String.valueOf(usuario.getId()));
 
         return linha;
     }
