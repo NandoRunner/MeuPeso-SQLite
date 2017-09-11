@@ -15,10 +15,9 @@ import fandradetecinfo.com.meupeso.Models.Usuario;
  * Created by Fernando on 22/02/2017.
  */
 
-public class UsuarioAdapter extends BaseAdapter {
+public class UsuarioAdapter extends _BaseAdapter {
 
     private final List<Usuario> usuarios;
-    private final Activity activity;
 
     public UsuarioAdapter(List<Usuario> usuarios, Activity activity) {
         this.usuarios = usuarios;
@@ -56,29 +55,7 @@ public class UsuarioAdapter extends BaseAdapter {
         TextView idd = (TextView) linha.findViewById(R.id.txtUsuID);
         TextView sexo = (TextView) linha.findViewById(R.id.txtUsuSexo);
 
-        ArrayList<TextView> lstTV = new ArrayList<>();
-
-        for( int i = 0; i < parent.getChildCount(); i++ )
-            if( parent.getChildAt( i ) instanceof TextView )
-                lstTV.add( (TextView) parent.getChildAt( i ) );
-
-
-//        lstTV.add(nome);
-//        lstTV.add(altura);
-//        lstTV.add(idade);
-//        lstTV.add(idd);
-//        lstTV.add(sexo);
-
-        int color = position % 2 != 0 ? R.color.colorWhite : R.color.colorBlack;
-
-        for( TextView aux : lstTV )
-        {
-            aux.setTextColor(activity.getResources().getColor(color));
-        }
-		
-        linha.setBackgroundColor(activity.getResources().getColor((position % 2 != 0 ?
-                    R.color.colorPrimary : R.color.actionbar_fg_color)));
-					
+        tratarCores(linha, position);
 					
         nome.setText(usuario.getNome());
         altura.setText(usuario.getAltura());

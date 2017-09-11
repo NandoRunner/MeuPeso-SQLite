@@ -15,10 +15,9 @@ import fandradetecinfo.com.meupeso.Models.BalancaDigital;
  * Created by Fernando on 14/07/2017.
  */
 
-public class RegistroAdapter extends BaseAdapter {
+public class RegistroAdapter extends _BaseAdapter {
 
     private final List<BalancaDigital> registros;
-    private final Activity activity;
 
     public RegistroAdapter(List<BalancaDigital> registros, Activity activity) {
         this.registros = registros;
@@ -40,11 +39,9 @@ public class RegistroAdapter extends BaseAdapter {
         return this.registros.get(position).getId();
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View linha = convertView;
-
         BalancaDigital registro = registros.get(position);
 
         if (linha == null)
@@ -55,24 +52,13 @@ public class RegistroAdapter extends BaseAdapter {
         TextView data = (TextView) linha.findViewById(R.id.txtRegData);
         TextView id_usuario = (TextView) linha.findViewById(R.id.txtRegUsuario);
         TextView peso = (TextView) linha.findViewById(R.id.txtRegPeso);
-        ArrayList<TextView> lstTV = new ArrayList<>();
-        lstTV.add(data);
-        lstTV.add(id_usuario);
-        lstTV.add(peso);
-        int color = position % 2 != 0 ? R.color.colorWhite : R.color.colorBlack;
 
-        for( TextView aux : lstTV )
-        {
-            aux.setTextColor(activity.getResources().getColor(color));
-        }
-		
-        linha.setBackgroundColor(activity.getResources().getColor((position % 2 != 0 ?
-                    R.color.colorPrimary : R.color.actionbar_fg_color)));
+        tratarCores(linha, position);
 					
         data.setText(String.valueOf(registro.getDataFormatada(registro.getData_registro())));
         id_usuario.setText(registro.getId_usuario());
         peso.setText(registro.getPeso());
+
         return linha;
     }
-
 }
